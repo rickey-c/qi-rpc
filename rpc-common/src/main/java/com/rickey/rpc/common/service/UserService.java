@@ -10,6 +10,7 @@ import com.rickey.rpc.common.model.User;
 public interface UserService {
     /**
      * 获取用户
+     *
      * @param user user
      * @return User用户
      */

@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(User user) {
-        log.info("User.name = {}",user.getName());
+        log.info("User.name = {}", user.getName());
         return user;
     }
 }

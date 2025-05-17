@@ -9,21 +9,21 @@ import java.io.IOException;
  */
 public interface Serializer {
     /**
-     * 将对象序列化为字节数组。
+     * 将对象序列化为字节数组
      *
      * @param object 要序列化的对象
-     * @param <T> 对象的类型
+     * @param <T>    对象的类型
      * @return 序列化后的字节数组
      * @throws IOException 如果序列化过程中发生 I/O 异常
      */
     <T> byte[] serialize(T object) throws IOException;
 
     /**
-     * 将字节数组反序列化为对象。
+     * 将字节数组反序列化为对象
      *
      * @param bytes 要反序列化的字节数组
-     * @param type 目标对象的类型
-     * @param <T> 目标对象的类型
+     * @param type  目标对象的类型
+     * @param <T>   目标对象的类型
      * @return 反序列化后的对象
      * @throws IOException 如果反序列化过程中发生 I/O 异常
      */

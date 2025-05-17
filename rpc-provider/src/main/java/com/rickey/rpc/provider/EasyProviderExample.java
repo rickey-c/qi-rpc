@@ -12,8 +12,8 @@ import com.rickey.rpc.server.VertexHttpServer;
 public class EasyProviderExample {
     public static void main(String[] args) {
         // 注册服务
-        LocalRegistry.register(UserService.class.getName(),UserServiceImpl.class);
-        
+        LocalRegistry.register(UserService.class.getName(), UserServiceImpl.class);
+
         // 启动web服务
         VertexHttpServer server = new VertexHttpServer();
         server.start(8080);

@@ -16,9 +16,9 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
+
     <dependencies>
-        
+
         <dependency>
             <groupId>com.rickey</groupId>
             <artifactId>rpc-common</artifactId>
@@ -52,7 +52,7 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
-        
+
     </dependencies>
 
     <build>
