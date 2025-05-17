@@ -7,11 +7,28 @@
     <groupId>com.rickey</groupId>
     <artifactId>qi-rpc</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>rpc-common</module>
+        <module>rpc-consumer</module>
+        <module>rpc-provider</module>
+        <module>rpc-core</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.22</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
