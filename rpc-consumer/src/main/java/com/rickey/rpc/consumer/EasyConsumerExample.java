@@ -2,6 +2,7 @@ package com.rickey.rpc.consumer;
 
 import com.rickey.rpc.common.model.User;
 import com.rickey.rpc.common.service.UserService;
+import com.rickey.rpc.proxy.ServiceProxyFactory;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -12,16 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class EasyConsumerExample {
     public static void main(String[] args) {
-        // TODO等待RPC实现服务调用
-        UserService userService = null;
-        User user = new User();
-        user.setName("rickey");
-        User userGetFromRPC = userService.getUser(user);
-        // 这里还没有RPC会报NPE
-        if (userGetFromRPC == null) {
-            log.error("can not access user");
-        } else {
-            log.info("userGetFromRPC = {}", userGetFromRPC);
-        }
+        UserService userService = ServiceProxyFactory.getProxy(UserService.class);
+        User rickey = userService.getUser(new User("rickey"));
+        System.out.println(rickey);
     }
 }
