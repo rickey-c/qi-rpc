@@ -26,7 +26,7 @@
 
     <dependencyManagement>
         <dependencies>
-            
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -38,21 +38,21 @@
                 <artifactId>hutool-all</artifactId>
                 <version>5.8.37</version>
             </dependency>
-            
+
             <!--slf4j依赖-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
-            
+
             <!-- logback 依赖 -->
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>1.5.18</version>
             </dependency>
-            
+
         </dependencies>
     </dependencyManagement>
 

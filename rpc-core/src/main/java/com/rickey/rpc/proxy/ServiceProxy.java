@@ -24,22 +24,18 @@ public class ServiceProxy implements InvocationHandler {
     private static final String SERVICE_URL = "http://localhost:8080";
 
     /**
-     * 
-     * @param proxy the proxy instance that the method was invoked on
-     *
+     * @param proxy  the proxy instance that the method was invoked on
      * @param method the {@code Method} instance corresponding to
-     * the interface method invoked on the proxy instance.  The declaring
-     * class of the {@code Method} object will be the interface that
-     * the method was declared in, which may be a superinterface of the
-     * proxy interface that the proxy class inherits the method through.
-     *
-     * @param args an array of objects containing the values of the
-     * arguments passed in the method invocation on the proxy instance,
-     * or {@code null} if interface method takes no arguments.
-     * Arguments of primitive types are wrapped in instances of the
-     * appropriate primitive wrapper class, such as
-     * {@code java.lang.Integer} or {@code java.lang.Boolean}.
-     *
+     *               the interface method invoked on the proxy instance.  The declaring
+     *               class of the {@code Method} object will be the interface that
+     *               the method was declared in, which may be a superinterface of the
+     *               proxy interface that the proxy class inherits the method through.
+     * @param args   an array of objects containing the values of the
+     *               arguments passed in the method invocation on the proxy instance,
+     *               or {@code null} if interface method takes no arguments.
+     *               Arguments of primitive types are wrapped in instances of the
+     *               appropriate primitive wrapper class, such as
+     *               {@code java.lang.Integer} or {@code java.lang.Boolean}.
      * @return 方法调用结果
      * @throws Throwable 序列化异常等
      */
