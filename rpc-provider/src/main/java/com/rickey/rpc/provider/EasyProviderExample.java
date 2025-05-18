@@ -1,5 +1,6 @@
 package com.rickey.rpc.provider;
 
+import com.rickey.rpc.RpcApplication;
 import com.rickey.rpc.common.service.UserService;
 import com.rickey.rpc.registry.LocalRegistry;
 import com.rickey.rpc.server.VertexHttpServer;
@@ -11,11 +12,14 @@ import com.rickey.rpc.server.VertexHttpServer;
  */
 public class EasyProviderExample {
     public static void main(String[] args) {
+        // RPC框架初始化 
+        RpcApplication.init();
+
         // 注册服务
         LocalRegistry.register(UserService.class.getName(), UserServiceImpl.class);
 
         // 启动web服务
         VertexHttpServer server = new VertexHttpServer();
-        server.start(8080);
+        server.start(RpcApplication.getRpcConfig().getServerPort());
     }
 }
