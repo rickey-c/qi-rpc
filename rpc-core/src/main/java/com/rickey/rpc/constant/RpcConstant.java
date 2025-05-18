@@ -8,9 +8,9 @@ package com.rickey.rpc.constant;
 public class RpcConstant {
 
     /**
-     * 默认前缀 
+     * 默认前缀
      * eg. rpc.name = qi-rpc
      */
     public static final String DEFAULT_CONFIG_PREFIX = "rpc";
-    
+
 }

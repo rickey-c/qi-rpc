@@ -45,6 +45,7 @@ public class RpcApplication {
 
     /**
      * 获取配置
+     *
      * @return RPC配置
      */
     public static RpcConfig getRpcConfig() {
