@@ -15,4 +15,12 @@ public interface UserService {
      * @return User用户
      */
     User getUser(User user);
+
+    /**
+     * test mock
+     * @return number
+     */
+    default short getNumber(){
+        return 1;
+    }
 }
