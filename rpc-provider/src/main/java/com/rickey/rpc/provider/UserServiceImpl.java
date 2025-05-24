@@ -17,4 +17,9 @@ public class UserServiceImpl implements UserService {
         log.info("User.name = {}", user.getName());
         return user;
     }
+
+    @Override
+    public int getNumber() {
+        return 10;
+    }
 }

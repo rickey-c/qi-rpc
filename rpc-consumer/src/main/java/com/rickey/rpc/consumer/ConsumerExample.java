@@ -35,7 +35,7 @@ public class ConsumerExample {
         }
 
         // 调用获取数字的方法
-        short number = userService.getNumber();
+        int number = userService.getNumber();
         log.info("Number: {}", number);
     }
 }

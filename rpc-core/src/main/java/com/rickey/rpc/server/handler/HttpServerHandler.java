@@ -1,10 +1,12 @@
 package com.rickey.rpc.server.handler;
 
+import com.rickey.rpc.RpcApplication;
 import com.rickey.rpc.registry.LocalRegistry;
 import com.rickey.rpc.request.RpcRequest;
 import com.rickey.rpc.response.RpcResponse;
 import com.rickey.rpc.serializer.JdkSerializer;
 import com.rickey.rpc.serializer.Serializer;
+import com.rickey.rpc.serializer.SerializerFactory;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
@@ -31,7 +33,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     @Override
     public void handle(HttpServerRequest request) {
         // 指定序列化器
-        final JdkSerializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         log.info("Received request : {},uri : {}", request.method(), request.uri());
 

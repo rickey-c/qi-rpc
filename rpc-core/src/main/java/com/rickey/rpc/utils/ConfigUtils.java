@@ -2,12 +2,14 @@ package com.rickey.rpc.utils;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.setting.dialect.Props;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Description: 配置工具类，用于加载配置文件并将其转换为指定的配置对象
  * @Author: rickey-c
  * @Date: 2025/5/18 23:33
  */
+@Slf4j
 public class ConfigUtils {
 
     /**
@@ -44,6 +46,7 @@ public class ConfigUtils {
         // 加载配置文件
         Props props = new Props(configFileBuilder.toString());
         // 将配置文件内容转换为指定的配置对象
+        log.info("application.properties is {}", props);
         return props.toBean(tClass, prefix);
     }
 }

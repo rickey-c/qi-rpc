@@ -18,9 +18,10 @@ public interface UserService {
 
     /**
      * test mock
+     *
      * @return number
      */
-    default short getNumber(){
+    default int getNumber() {
         return 1;
     }
 }

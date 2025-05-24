@@ -2,9 +2,11 @@ package com.rickey.rpc.proxy;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
+import com.rickey.rpc.RpcApplication;
 import com.rickey.rpc.request.RpcRequest;
 import com.rickey.rpc.response.RpcResponse;
-import com.rickey.rpc.serializer.JdkSerializer;
+import com.rickey.rpc.serializer.Serializer;
+import com.rickey.rpc.serializer.SerializerFactory;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationHandler;
@@ -24,6 +26,12 @@ public class ServiceProxy implements InvocationHandler {
     private static final String SERVICE_URL = "http://localhost:8080";
 
     /**
+     * 序列化器
+     */
+    final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
+
+
+    /**
      * @param proxy  the proxy instance that the method was invoked on
      * @param method the {@code Method} instance corresponding to
      *               the interface method invoked on the proxy instance.  The declaring
@@ -41,9 +49,6 @@ public class ServiceProxy implements InvocationHandler {
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        // 序列化工具
-        JdkSerializer serializer = new JdkSerializer();
-
         // 构建RPC请求
         RpcRequest rpcRequest = RpcRequest.builder()
                 .serviceName(method.getDeclaringClass().getName())
