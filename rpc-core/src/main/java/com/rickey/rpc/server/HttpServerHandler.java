@@ -1,10 +1,9 @@
-package com.rickey.rpc.server.handler;
+package com.rickey.rpc.server;
 
 import com.rickey.rpc.RpcApplication;
 import com.rickey.rpc.registry.LocalRegistry;
 import com.rickey.rpc.request.RpcRequest;
 import com.rickey.rpc.response.RpcResponse;
-import com.rickey.rpc.serializer.JdkSerializer;
 import com.rickey.rpc.serializer.Serializer;
 import com.rickey.rpc.serializer.SerializerFactory;
 import io.vertx.core.Handler;

@@ -1,6 +1,5 @@
 package com.rickey.rpc.server;
 
-import com.rickey.rpc.server.handler.HttpServerHandler;
 import io.vertx.core.Vertx;
 import lombok.extern.slf4j.Slf4j;
 
