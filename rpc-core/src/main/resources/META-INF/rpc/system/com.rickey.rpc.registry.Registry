@@ -1,0 +1,1 @@
+etcd=com.rickey.rpc.registry.EtcdRegistry

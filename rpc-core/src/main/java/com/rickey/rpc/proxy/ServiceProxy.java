@@ -1,8 +1,14 @@
 package com.rickey.rpc.proxy;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import com.rickey.rpc.RpcApplication;
+import com.rickey.rpc.config.RpcConfig;
+import com.rickey.rpc.constant.RpcConstant;
+import com.rickey.rpc.model.ServiceMetaInfo;
+import com.rickey.rpc.registry.Registry;
+import com.rickey.rpc.registry.RegistryFactory;
 import com.rickey.rpc.request.RpcRequest;
 import com.rickey.rpc.response.RpcResponse;
 import com.rickey.rpc.serializer.Serializer;
@@ -11,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * @Description: 动态代理类(JDK动态代理)
@@ -58,19 +65,30 @@ public class ServiceProxy implements InvocationHandler {
                 .build();
 
         // 序列化请求数据
+        String serviceName = method.getDeclaringClass().getName();
         byte[] bodyBytes = serializer.serialize(rpcRequest);
 
-        // TODO 利用注册中心发现服务
+        // 利用注册中心发现服务
+
+        RpcConfig rpcConfig = RpcApplication.getRpcConfig();
+        Registry registry = RegistryFactory.getInstance(rpcConfig.getRegistryConfig().getRegistry());
+        ServiceMetaInfo serviceMetaInfo = new ServiceMetaInfo();
+        serviceMetaInfo.setServiceName(serviceName);
+        serviceMetaInfo.setServiceVersion(RpcConstant.DEFAULT_SERVICE_VERSION);
+        List<ServiceMetaInfo> serviceMetaInfoList = registry.serviceDiscovery(serviceMetaInfo.getServiceKey());
+        if (CollUtil.isEmpty(serviceMetaInfoList)) {
+            throw new RuntimeException("暂无服务地址");
+        }
+        ServiceMetaInfo selectedServiceMetaInfo = serviceMetaInfoList.get(0);
+
         // 发送HTTP请求并处理响应，这里先写死
-        try (HttpResponse httpResponse = HttpRequest.post(SERVICE_URL)
+        try (HttpResponse httpResponse = HttpRequest.post(selectedServiceMetaInfo.getServiceAddress())
                 .body(bodyBytes)
                 .execute()) {
-
             if (httpResponse.isOk()) {
                 byte[] result = httpResponse.bodyBytes();
+                // 反序列化
                 RpcResponse rpcResponse = serializer.deserialize(result, RpcResponse.class);
-
-                // 返回响应数据
                 return rpcResponse.getData();
             } else {
                 log.error("Failed to call service. HTTP Status: {}, Response: {}",

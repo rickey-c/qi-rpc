@@ -1,7 +1,10 @@
 package com.rickey.rpc;
 
+import com.rickey.rpc.config.RegistryConfig;
 import com.rickey.rpc.config.RpcConfig;
 import com.rickey.rpc.constant.RpcConstant;
+import com.rickey.rpc.registry.Registry;
+import com.rickey.rpc.registry.RegistryFactory;
 import com.rickey.rpc.utils.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,6 +29,10 @@ public class RpcApplication {
     public static void init(RpcConfig newRpcConfig) {
         rpcConfig = newRpcConfig;
         log.info("rpc init,config = {}", rpcConfig.toString());
+        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
+        Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
+        registry.init(registryConfig);
+        log.info("registry init,config = {}", registryConfig);
     }
 
     /**
