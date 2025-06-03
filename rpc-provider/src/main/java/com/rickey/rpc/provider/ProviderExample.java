@@ -1,16 +1,10 @@
 package com.rickey.rpc.provider;
 
-
-import com.rickey.rpc.RpcApplication;
+import com.rickey.rpc.bootstrap.ProviderBootstrap;
 import com.rickey.rpc.common.service.UserService;
-import com.rickey.rpc.config.RegistryConfig;
-import com.rickey.rpc.config.RpcConfig;
-import com.rickey.rpc.model.ServiceMetaInfo;
-import com.rickey.rpc.registry.LocalRegistry;
-import com.rickey.rpc.registry.Registry;
-import com.rickey.rpc.registry.RegistryFactory;
-import com.rickey.rpc.server.HttpServer;
-import com.rickey.rpc.server.VertexHttpServer;
+import com.rickey.rpc.model.ServiceRegisterInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Description: 生产者测试
@@ -20,29 +14,12 @@ import com.rickey.rpc.server.VertexHttpServer;
 public class ProviderExample {
 
     public static void main(String[] args) {
-        // RPC 框架初始化
-        RpcApplication.init();
+        // 要注册的服务
+        List<ServiceRegisterInfo<?>> serviceRegisterInfoList = new ArrayList<>();
+        ServiceRegisterInfo<UserService> serviceRegisterInfo = new ServiceRegisterInfo<>(UserService.class.getName(), UserServiceImpl.class);
+        serviceRegisterInfoList.add(serviceRegisterInfo);
 
-        // 注册服务
-        String serviceName = UserService.class.getName();
-        LocalRegistry.register(serviceName, UserServiceImpl.class);
-
-        // 注册服务到注册中心
-        RpcConfig rpcConfig = RpcApplication.getRpcConfig();
-        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
-        Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
-        ServiceMetaInfo serviceMetaInfo = new ServiceMetaInfo();
-        serviceMetaInfo.setServiceName(serviceName);
-        serviceMetaInfo.setServiceHost(rpcConfig.getServerHost());
-        serviceMetaInfo.setServicePort(rpcConfig.getServerPort());
-        try {
-            registry.register(serviceMetaInfo);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        // 启动 web 服务
-        HttpServer httpServer = new VertexHttpServer();
-        httpServer.start(RpcApplication.getRpcConfig().getServerPort());
+        // 服务提供者初始化
+        ProviderBootstrap.init(serviceRegisterInfoList);
     }
 }
