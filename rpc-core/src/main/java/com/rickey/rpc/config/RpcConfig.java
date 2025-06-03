@@ -1,5 +1,8 @@
 package com.rickey.rpc.config;
 
+import com.rickey.rpc.fault.retry.RetryStrategyKeys;
+import com.rickey.rpc.fault.tolerant.TolerantStrategy;
+import com.rickey.rpc.fault.tolerant.TolerantStrategyKeys;
 import com.rickey.rpc.loadbalancer.LoadBalancerKeys;
 import com.rickey.rpc.serializer.SerializerKeys;
 import lombok.Data;
@@ -51,4 +54,14 @@ public class RpcConfig {
      * 负载均衡器
      */
     private String loadBalancer = LoadBalancerKeys.ROUND_ROBIN;
+
+    /**
+     * 重试策略
+     */
+    private String retryStrategy = RetryStrategyKeys.NO;
+
+    /**
+     * 容错策略
+     */
+    private String tolerantStrategy = TolerantStrategyKeys.FAIL_FAST;
 }

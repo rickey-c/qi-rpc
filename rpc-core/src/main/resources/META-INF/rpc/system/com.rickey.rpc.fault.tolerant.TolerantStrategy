@@ -1,0 +1,4 @@
+failBack=com.rickey.rpc.fault.tolerant.FailBackTolerantStrategy
+failFast=com.rickey.rpc.fault.tolerant.FailFastTolerantStrategy
+failOver=com.rickey.rpc.fault.tolerant.FailOverTolerantStrategy
+failSafe=com.rickey.rpc.fault.tolerant.FailSafeTolerantStrategy
