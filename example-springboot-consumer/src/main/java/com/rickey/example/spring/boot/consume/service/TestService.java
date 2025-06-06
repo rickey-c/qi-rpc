@@ -7,13 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * @Description:
+ * @Description: testService
  * @Author: rickey-c
  * @Date: 2025/6/3 17:29
  */
 @Slf4j
 @Service
-public class ExampleServiceImpl {
+public class TestService {
     
     @RpcReference
     private UserService userService;

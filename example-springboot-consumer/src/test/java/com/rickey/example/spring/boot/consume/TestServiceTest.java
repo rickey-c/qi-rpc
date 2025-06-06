@@ -1,19 +1,19 @@
 package com.rickey.example.spring.boot.consume;
 
-import com.rickey.example.spring.boot.consume.service.ExampleServiceImpl;
+import com.rickey.example.spring.boot.consume.service.TestService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ExampleServiceImplTest {
+class TestServiceTest {
 
     @Autowired
-    private ExampleServiceImpl exampleService;
+    private TestService testService;
 
     @Test
     void exampleUserServiceTest() {
-        exampleService.test();
+        testService.test();
     }
     
 }
