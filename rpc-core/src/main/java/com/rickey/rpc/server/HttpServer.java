@@ -12,5 +12,5 @@ public interface HttpServer {
      *
      * @param port 服务启动端口
      */
-    void start(int port);
+    void doStart(int port);
 }

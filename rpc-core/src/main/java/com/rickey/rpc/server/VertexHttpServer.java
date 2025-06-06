@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 public class VertexHttpServer implements HttpServer {
 
     @Override
-    public void start(int port) {
+    public void doStart(int port) {
         // 创建vertx实例
         Vertx vertx = Vertx.vertx();
 
@@ -27,7 +27,7 @@ public class VertexHttpServer implements HttpServer {
             if (result.succeeded()) {
                 log.info("HTTP Server started successfully and is now listening on port: {}", port);
             } else {
-                log.error("HTTP Server failed to start on port: {}. Cause: {}", port, result.cause().getMessage(), result.cause());
+                log.error("HTTP Server failed to doStart on port: {}. Cause: {}", port, result.cause().getMessage(), result.cause());
             }
         });
     }

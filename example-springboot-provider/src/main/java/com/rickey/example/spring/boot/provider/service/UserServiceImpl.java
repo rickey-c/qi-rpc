@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Override
     public User getUser(User user) {
-        //todo 注解驱动测试失败
         log.info("user name is : {}",user.getName());
         return user;
     }

@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class LoadBalancerTest {
 
-    final LoadBalancer loadBalancer = new ConsistentHashLoadBalancer();
+    final LoadBalancer loadBalancer = new RandomLoadBalancer();
 
     @Test
     public void select() {
@@ -26,12 +26,12 @@ public class LoadBalancerTest {
         serviceMetaInfo1.setServiceName("myService");
         serviceMetaInfo1.setServiceVersion("1.0");
         serviceMetaInfo1.setServiceHost("localhost");
-        serviceMetaInfo1.setServicePort(8080);
+        serviceMetaInfo1.setServicePort(1234);
         ServiceMetaInfo serviceMetaInfo2 = new ServiceMetaInfo();
         serviceMetaInfo2.setServiceName("myService");
         serviceMetaInfo2.setServiceVersion("1.0");
-        serviceMetaInfo2.setServiceHost("localhost");
-        serviceMetaInfo2.setServicePort(8081);
+        serviceMetaInfo2.setServiceHost("rickey.com");
+        serviceMetaInfo2.setServicePort(80);
         List<ServiceMetaInfo> serviceMetaInfoList = Arrays.asList(serviceMetaInfo1, serviceMetaInfo2);
         // 连续调用 3 次
         ServiceMetaInfo serviceMetaInfo = loadBalancer.select(requestParams, serviceMetaInfoList);

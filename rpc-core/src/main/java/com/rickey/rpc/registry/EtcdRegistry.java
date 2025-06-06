@@ -1,6 +1,7 @@
 package com.rickey.rpc.registry;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.collection.ConcurrentHashSet;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
@@ -93,7 +94,8 @@ public class EtcdRegistry implements Registry {
     @Override
     public List<ServiceMetaInfo> serviceDiscovery(String serviceKey) {
         List<ServiceMetaInfo> cachedServiceMetaInfoList = registryServiceCache.readCache();
-        if (cachedServiceMetaInfoList != null) {
+        if (CollectionUtil.isNotEmpty(cachedServiceMetaInfoList)) {
+            log.info("cachedServiceMetaInfoList is not null");
             return cachedServiceMetaInfoList;
         }
         // 前缀搜索，结尾一定要加 '/'
@@ -110,11 +112,15 @@ public class EtcdRegistry implements Registry {
             // 解析服务信息
             List<ServiceMetaInfo> serviceMetaInfoList = keyValues.stream()
                     .map(keyValue -> {
+                        String key = keyValue.getKey().toString(StandardCharsets.UTF_8);
+                        // 监听 key 的变化
+                        watch(key);
                         String value = keyValue.getValue().toString(StandardCharsets.UTF_8);
                         return JSONUtil.toBean(value, ServiceMetaInfo.class);
                     })
                     .collect(Collectors.toList());
             registryServiceCache.writeCache(serviceMetaInfoList);
+            log.debug("servcieMetaInfoList is : {}",serviceMetaInfoList);
             return serviceMetaInfoList;
         } catch (Exception e) {
             throw new RuntimeException("获取服务列表失败", e);

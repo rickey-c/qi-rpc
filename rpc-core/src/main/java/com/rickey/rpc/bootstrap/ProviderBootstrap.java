@@ -38,6 +38,7 @@ public class ProviderBootstrap {
             Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
             ServiceMetaInfo serviceMetaInfo = new ServiceMetaInfo();
             serviceMetaInfo.setServiceName(serviceName);
+            serviceMetaInfo.setServiceVersion(rpcConfig.getVersion());
             serviceMetaInfo.setServiceHost(rpcConfig.getServerHost());
             serviceMetaInfo.setServicePort(rpcConfig.getServerPort());
             try {
@@ -49,6 +50,6 @@ public class ProviderBootstrap {
 
         // 启动服务器
         VertxTcpServer vertxTcpServer = new VertxTcpServer();
-        vertxTcpServer.start(rpcConfig.getServerPort());
+        vertxTcpServer.doStart(rpcConfig.getServerPort());
     }
 }

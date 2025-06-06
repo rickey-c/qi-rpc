@@ -13,8 +13,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class EasyConsumerExample {
     public static void main(String[] args) {
+        // 获取代理
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
-        User rickey = userService.getUser(new User("rickey"));
-        System.out.println(rickey);
+        User user = new User();
+        user.setName("rickey");
+        // 调用
+        User newUser = userService.getUser(user);
+        if (newUser != null) {
+            log.info(newUser.getName());
+        } else {
+            log.warn("user == null");
+        }
+        int number = userService.getNumber();
+        log.info("number is : {}",number);
     }
 }

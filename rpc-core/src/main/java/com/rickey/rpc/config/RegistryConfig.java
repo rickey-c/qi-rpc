@@ -1,5 +1,6 @@
 package com.rickey.rpc.config;
 
+import com.rickey.rpc.registry.RegistryKeys;
 import lombok.Data;
 
 /**
@@ -13,12 +14,12 @@ public class RegistryConfig {
     /**
      * 注册中心
      */
-    private String registry = "etcd";
+    private String registry = RegistryKeys.ETCD;
 
     /**
      * 注册中心地址
      */
-    private String address = "http://localhost:2380";
+    private String address = "http://localhost:2379";
 
     /**
      * 用户名

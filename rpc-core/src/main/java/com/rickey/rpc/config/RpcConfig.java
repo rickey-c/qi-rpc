@@ -23,7 +23,7 @@ public class RpcConfig {
     /**
      * 版本
      */
-    private String version = "v1.0";
+    private String version = "1.0";
 
     /**
      * 服务器主机名

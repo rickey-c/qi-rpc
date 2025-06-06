@@ -12,6 +12,9 @@ import io.vertx.core.parsetools.RecordParser;
  */
 public class TcpBufferHandlerWrapper implements Handler<Buffer> {
 
+    /**
+     * 解析器，用于解决半包、粘包问题
+     */
     private final RecordParser recordParser;
 
     public TcpBufferHandlerWrapper(Handler<Buffer> bufferHandler) {
@@ -35,6 +38,7 @@ public class TcpBufferHandlerWrapper implements Handler<Buffer> {
 
             @Override
             public void handle(Buffer buffer) {
+                // 1. 每次循环，首先读取消息头
                 if (-1 == size) {
                     // 读取消息体长度
                     size = buffer.getInt(13);
@@ -42,6 +46,7 @@ public class TcpBufferHandlerWrapper implements Handler<Buffer> {
                     // 写入头信息到结果
                     resultBuffer.appendBuffer(buffer);
                 } else {
+                    // 2. 然后读取消息体
                     // 写入体信息到结果
                     resultBuffer.appendBuffer(buffer);
                     // 已拼接为完整 Buffer，执行处理
