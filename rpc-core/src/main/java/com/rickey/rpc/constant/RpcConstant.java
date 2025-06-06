@@ -17,4 +17,9 @@ public class RpcConstant {
      * 默认服务版本
      */
     public static final String DEFAULT_SERVICE_VERSION = "1.0";
+
+    /**
+     * 方法名
+     */
+    public static final String METHOD_NAME = "methodName";
 }

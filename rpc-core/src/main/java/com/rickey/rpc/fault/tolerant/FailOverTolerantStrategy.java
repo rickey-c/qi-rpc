@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.rickey.rpc.constant.RpcConstant.METHOD_NAME;
+
 /**
  * @Description: 转移到其他服务节点
  * @Author: rickey-c
@@ -38,7 +40,7 @@ public class FailOverTolerantStrategy implements TolerantStrategy {
         RpcConfig rpcConfig = RpcApplication.getRpcConfig();
         LoadBalancer loadBalancer = LoadBalancerFactory.getInstance(rpcConfig.getLoadBalancer());
         Map<String, Object> requestParamMap = new HashMap<>(8);
-        requestParamMap.put("methodName", rpcRequest.getMethodName());
+        requestParamMap.put(METHOD_NAME, rpcRequest.getMethodName());
 
         RpcResponse rpcResponse;
         while (!serviceMetaInfoList.isEmpty()) {
