@@ -31,7 +31,7 @@ public class RpcProviderBootstrap implements BeanPostProcessor {
      * @throws BeansException 处理异常
      */
     @Override
-    public Object postProcessAfterInitialization(Object bean,@NonNull String beanName) throws BeansException {
+    public Object postProcessAfterInitialization(Object bean, @NonNull String beanName) throws BeansException {
         Class<?> beanClass = bean.getClass();
         RpcService rpcService = beanClass.getAnnotation(RpcService.class);
         if (rpcService != null) {

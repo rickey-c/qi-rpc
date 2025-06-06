@@ -120,7 +120,7 @@ public class EtcdRegistry implements Registry {
                     })
                     .collect(Collectors.toList());
             registryServiceCache.writeCache(serviceMetaInfoList);
-            log.debug("servcieMetaInfoList is : {}",serviceMetaInfoList);
+            log.debug("servcieMetaInfoList is : {}", serviceMetaInfoList);
             return serviceMetaInfoList;
         } catch (Exception e) {
             throw new RuntimeException("获取服务列表失败", e);

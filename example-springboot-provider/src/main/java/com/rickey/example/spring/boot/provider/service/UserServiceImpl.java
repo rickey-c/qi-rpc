@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Override
     public User getUser(User user) {
-        log.info("user name is : {}",user.getName());
+        log.info("user name is : {}", user.getName());
         String name = user.getName();
         String newName = name + " after PRC";
         user.setName(newName);

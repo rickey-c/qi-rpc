@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class TestController {
-    
+
     @RpcReference
     private UserService userService;
-    
+
     @PostMapping("/test")
-    public String testUser(@RequestBody User req){
+    public String testUser(@RequestBody User req) {
         User user = userService.getUser(req);
         return user.getName();
     }

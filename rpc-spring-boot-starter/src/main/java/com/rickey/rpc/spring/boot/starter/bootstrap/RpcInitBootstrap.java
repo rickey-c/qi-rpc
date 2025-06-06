@@ -9,6 +9,7 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.lang.NonNull;
+
 import java.util.Objects;
 
 /**
@@ -24,10 +25,10 @@ public class RpcInitBootstrap implements ImportBeanDefinitionRegistrar {
      * Spring 初始化时执行，初始化 RPC 框架
      *
      * @param importingClassMetadata 注解类的元信息
-     * @param registry 注册中心
+     * @param registry               注册中心
      */
     @Override
-    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,@NonNull BeanDefinitionRegistry registry) {
+    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, @NonNull BeanDefinitionRegistry registry) {
         // 获取 EnableRpc 注解的属性值
         boolean needServer = (boolean) Objects.requireNonNull(importingClassMetadata.getAnnotationAttributes(EnableRpc.class.getName()))
                 .get("needServer");

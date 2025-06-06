@@ -17,9 +17,10 @@ public interface Registry {
      * @param registryConfig 服务配置
      */
     void init(RegistryConfig registryConfig);
-    
+
     /**
      * 注册服务（服务端）
+     *
      * @param serviceMetaInfo 服务元信息
      * @throws Exception 异常
      */

@@ -3,6 +3,7 @@ package com.rickey.rpc.provider;
 import com.rickey.rpc.bootstrap.ProviderBootstrap;
 import com.rickey.rpc.common.service.UserService;
 import com.rickey.rpc.model.ServiceRegisterInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -25,6 +25,6 @@ public class EasyConsumerExample {
             log.warn("user == null");
         }
         int number = userService.getNumber();
-        log.info("number is : {}",number);
+        log.info("number is : {}", number);
     }
 }
