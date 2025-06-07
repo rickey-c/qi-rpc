@@ -3,3 +3,8 @@ server:
 spring:
   application:
     name: example-spring-boot-consumer
+dubbo:
+  application:
+    name: example-spring-boot-consumer
+  registry:
+    address: nacos://localhost:8848

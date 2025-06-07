@@ -15,5 +15,5 @@ class TestServiceTest {
     void exampleUserServiceTest() {
         testService.test();
     }
-    
+
 }

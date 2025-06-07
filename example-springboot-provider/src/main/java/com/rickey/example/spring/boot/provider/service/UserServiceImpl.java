@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @Date: 2025/6/3 17:27
  */
 @Service
-@RpcService
+//@RpcService
 @Slf4j
 public class UserServiceImpl implements UserService {
     @Override
