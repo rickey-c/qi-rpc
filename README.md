@@ -21,6 +21,8 @@ qi-rpc
 ├── example-springboot-provider # Spring Boot 版服务提供者示例
 └── example-springboot-consumer # Spring Boot 版服务消费者示例
 ```
+![image](https://github.com/user-attachments/assets/bf8b26a7-51f7-4d4f-af3a-52dcbfd09f3a)
+
 
 ## 主要功能
 
