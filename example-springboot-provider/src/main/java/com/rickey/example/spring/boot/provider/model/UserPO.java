@@ -3,6 +3,8 @@ package com.rickey.example.spring.boot.provider.model;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @Description:
  * @Author: rickey-c
@@ -10,7 +12,7 @@ import lombok.Data;
  */
 @Data
 @TableName("`user`")
-public class UserPO {
+public class UserPO implements Serializable {
     private Long id;
     private String name;
     private Integer age;

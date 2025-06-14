@@ -4,7 +4,8 @@
 
 本项目是厦门大学软件工程中间件技术课程的大作业，目标是构建一个功能全面的轻量级RPC（Remote Procedure Call）框架。
 
-`qi-rpc` 是一款基于 Java 的远程过程调用框架，实现了服务注册与发现、动态代理、多种序列化与负载均衡策略、以及丰富的容错机制。该框架还提供了与 Spring Boot 的无缝集成，开发者可以通过简单的注解快速地发布和引用远程服务。
+`qi-rpc` 是一款基于 Java 的远程过程调用框架，实现了服务注册与发现、动态代理、多种序列化与负载均衡策略、以及丰富的容错机制。该框架还提供了与
+Spring Boot 的无缝集成，开发者可以通过简单的注解快速地发布和引用远程服务。
 
 ## 项目架构
 
@@ -87,7 +88,8 @@ mvn clean install
 ### 3. 启动服务提供者
 
 * 进入 `example-springboot-provider` 模块。
-* **重要**: 为了测试 `qi-rpc`，请取消 `UserServiceImpl.java` 中的 `@RpcService` 注解的注释，并取消 `ExampleSpringbootProviderApplication.java` 中 `@EnableRpc` 的注释，同时可以注释掉 `@EnableDubbo`。
+* **重要**: 为了测试 `qi-rpc`，请取消 `UserServiceImpl.java` 中的 `@RpcService` 注解的注释，并取消
+  `ExampleSpringbootProviderApplication.java` 中 `@EnableRpc` 的注释，同时可以注释掉 `@EnableDubbo`。
 
 ```java
 // in UserServiceImpl.java
@@ -107,7 +109,8 @@ public class ExampleSpringbootProviderApplication { ... }
 ### 4. 启动服务消费者
 
 * 进入 `example-springboot-consumer` 模块。
-* **重要**: 同样地，请在 `ExampleSpringbootConsumerApplication.java` 中取消 `@EnableRpc` 注解的注释（并确保其 `needServer` 属性为 `false`）。
+* **重要**: 同样地，请在 `ExampleSpringbootConsumerApplication.java` 中取消 `@EnableRpc` 注解的注释（并确保其 `needServer`
+  属性为 `false`）。
 
 ```java
 // in ExampleSpringbootConsumerApplication.java
@@ -134,7 +137,8 @@ INFO ... : user name is : rickey
 
 ## 配置说明
 
-本框架提供了丰富的配置项，可以在 Spring Boot 的 `application.properties` 或 `application.yaml` 文件中进行配置，所有配置项均以 `rpc.` 为前缀。
+本框架提供了丰富的配置项，可以在 Spring Boot 的 `application.properties` 或 `application.yaml` 文件中进行配置，所有配置项均以
+`rpc.` 为前缀。
 
 以下是一些核心配置项示例（`rpc-core/src/main/java/com/rickey/rpc/config/RpcConfig.java`）：
 

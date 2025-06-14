@@ -24,19 +24,29 @@ public class ConsumerController {
     private UserService userService;
 
     @RpcReference
-    private UserService userServiceRPC;
+    private UserService userServiceRpc;
 
     @PostMapping("/rpc/qi")
     public ApiResponse<Void> testQiRpc(@RequestBody User req) {
-        String msg = userService.addUser(req);
-        log.info("qi rpc response is : {}",msg);
+        String msg = null;
+        try {
+            msg = userServiceRpc.addUser(req);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        log.info("qi rpc response is : {}", msg);
         return ApiResponse.success();
     }
-    
+
     @PostMapping("/rpc/dubbo")
     public ApiResponse<Void> testDubboRpc(@RequestBody User req) {
-        String msg = userService.addUser(req);
-        log.info("dubbo rpc response is : {}",msg);
+        String msg = null;
+        try {
+            msg = userService.addUser(req);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        log.info("dubbo rpc response is : {}", msg);
         return ApiResponse.success();
     }
 

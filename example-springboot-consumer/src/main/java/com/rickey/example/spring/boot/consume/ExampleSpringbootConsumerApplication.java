@@ -6,8 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//@EnableRpc(needServer = false)
-@EnableDubbo
+@EnableRpc(needServer = false)
+//@EnableDubbo
 public class ExampleSpringbootConsumerApplication {
 
     public static void main(String[] args) {

@@ -1,6 +1,7 @@
 package com.rickey.example.spring.boot.consume;
 
-import com.rickey.example.spring.boot.consume.service.TestService;
+import com.rickey.example.spring.boot.consume.controller.ConsumerController;
+import com.rickey.rpc.common.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,11 +10,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 class TestServiceTest {
 
     @Autowired
-    private TestService testService;
+    private ConsumerController consumerController;
 
     @Test
     void exampleUserServiceTest() {
-        testService.test();
+        User user = new User();
+        user.setName("rice");
+        user.setAge(19);
+        user.setEmail("312");
+        consumerController.testQiRpc(user);
     }
 
 }

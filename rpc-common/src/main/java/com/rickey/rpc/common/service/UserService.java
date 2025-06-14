@@ -31,5 +31,5 @@ public interface UserService {
      * @param user user
      * @return
      */
-    String addUser(User user);
+    String addUser(User user) throws InterruptedException;
 }

@@ -5,10 +5,13 @@ import com.rickey.example.spring.boot.provider.model.UserPO;
 import com.rickey.example.spring.boot.provider.util.ConvertUtils;
 import com.rickey.rpc.common.model.User;
 import com.rickey.rpc.common.service.UserService;
+import com.rickey.rpc.spring.boot.starter.annotation.RpcService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @Description: 用户服务实现类
@@ -16,14 +19,14 @@ import org.springframework.stereotype.Service;
  * @Date: 2025/6/3 17:27
  */
 @Service
-//@RpcService
+@RpcService
 @Slf4j
-@DubboService
+//@DubboService(timeout = 300)
 public class UserServiceImpl implements UserService {
-    
-    @Autowired
+
+    @Resource
     private UserMapper userMapper;
-    
+
     @Override
     public User getUser(Long id) {
         log.info("user id is : {}", id);
@@ -33,8 +36,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String addUser(User user) {
-        UserPO userPO = ConvertUtils.convertToUserPO(user);
-        userMapper.insert(userPO);
+//        UserPO userPO = ConvertUtils.convertToUserPO(user);
         return "success";
     }
 }

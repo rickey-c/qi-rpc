@@ -43,4 +43,14 @@ public class LocalRegistry {
     public static void remove(String serviceName) {
         MAP.remove(serviceName);
     }
+
+    /**
+     * 获取服务
+     */
+    public static Object getService(String serviceName) {
+        if (MAP.isEmpty()) {
+            throw new RuntimeException("No service available");
+        }
+        return MAP.get(serviceName);
+    }
 }

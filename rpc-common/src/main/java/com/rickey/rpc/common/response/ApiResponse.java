@@ -1,6 +1,7 @@
 package com.rickey.rpc.common.response;
 
 import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -31,7 +32,8 @@ public class ApiResponse<T> implements Serializable {
     /**
      * 私有构造函数，防止外部直接实例化
      */
-    private ApiResponse() {}
+    private ApiResponse() {
+    }
 
     private ApiResponse(int code, String message, T data) {
         this.code = code;
@@ -41,6 +43,7 @@ public class ApiResponse<T> implements Serializable {
 
     /**
      * 成功响应（不带数据）
+     *
      * @return ApiResponse<Void>
      */
     public static ApiResponse<Void> success() {
@@ -49,6 +52,7 @@ public class ApiResponse<T> implements Serializable {
 
     /**
      * 成功响应（带数据）
+     *
      * @param data 响应数据
      * @return ApiResponse<T>
      */
@@ -58,17 +62,19 @@ public class ApiResponse<T> implements Serializable {
 
     /**
      * 失败响应（使用预定义错误码）
+     *
      * @param errorCode 错误码枚举
      * @return ApiResponse<Void>
      */
     public static ApiResponse<Void> error(ResponseCode errorCode) {
         return new ApiResponse<>(errorCode.getCode(), errorCode.getMessage(), null);
     }
-    
+
     /**
      * 失败响应（使用预定义错误码和自定义消息）
+     *
      * @param errorCode 错误码枚举
-     * @param message 自定义错误消息
+     * @param message   自定义错误消息
      * @return ApiResponse<Void>
      */
     public static ApiResponse<Void> error(ResponseCode errorCode, String message) {
@@ -77,7 +83,8 @@ public class ApiResponse<T> implements Serializable {
 
     /**
      * 失败响应（使用自定义错误码和消息）
-     * @param code 自定义状态码
+     *
+     * @param code    自定义状态码
      * @param message 自定义消息
      * @return ApiResponse<Void>
      */

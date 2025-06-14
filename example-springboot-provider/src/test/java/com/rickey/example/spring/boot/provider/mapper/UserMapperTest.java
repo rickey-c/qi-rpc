@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @SpringBootTest
 public class UserMapperTest {
-    
+
     @Autowired
     private UserMapper userMapper;
 
@@ -33,5 +33,5 @@ public class UserMapperTest {
         assertThat(dbUser).isNotNull();
         assertThat(dbUser.getName()).isEqualTo("Tom");
     }
-    
+
 }

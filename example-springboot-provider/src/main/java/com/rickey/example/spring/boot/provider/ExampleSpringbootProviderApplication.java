@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan(basePackages = "com.rickey.example.spring.boot.provider.mapper")
-//@EnableRpc
-@EnableDubbo
+@EnableRpc
+//@EnableDubbo
 public class ExampleSpringbootProviderApplication {
 
     public static void main(String[] args) {
