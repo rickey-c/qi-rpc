@@ -15,5 +15,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements Serializable {
+    private Long id;
     private String name;
+    private Integer age;
+    private String email;
 }

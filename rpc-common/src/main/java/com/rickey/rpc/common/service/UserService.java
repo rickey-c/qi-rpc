@@ -11,10 +11,10 @@ public interface UserService {
     /**
      * 获取用户
      *
-     * @param user user
+     * @param id userId
      * @return User用户
      */
-    User getUser(User user);
+    User getUser(Long id);
 
     /**
      * test mock
@@ -24,4 +24,12 @@ public interface UserService {
     default int getNumber() {
         return 1;
     }
+
+    /**
+     * 添加用户
+     *
+     * @param user user
+     * @return
+     */
+    String addUser(User user);
 }

@@ -4,7 +4,10 @@ spring:
   application:
     name: example-spring-boot-consumer
 dubbo:
+  protocol:
+    dubbo:
+      port: 20888
   application:
     name: example-spring-boot-consumer
   registry:
-    address: nacos://localhost:8848
+    address: nacos://124.222.215.143:8848

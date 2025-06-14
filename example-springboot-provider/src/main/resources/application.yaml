@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: example-spring-boot-provider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://qi-rpc:3306/rpc_test?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: Crq13709390514..
 
 nacos:
   discovery:
@@ -12,4 +17,4 @@ dubbo:
   application:
     name: example-spring-boot-provider
   registry:
-    address: nacos://localhost:8848
+    address: nacos://nacos:8848

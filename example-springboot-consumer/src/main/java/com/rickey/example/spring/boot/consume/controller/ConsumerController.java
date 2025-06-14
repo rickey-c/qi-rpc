@@ -1,12 +1,11 @@
 package com.rickey.example.spring.boot.consume.controller;
 
 import com.rickey.rpc.common.model.User;
-import com.rickey.rpc.common.service.DubboDemoService;
+import com.rickey.rpc.common.response.ApiResponse;
 import com.rickey.rpc.common.service.UserService;
 import com.rickey.rpc.spring.boot.starter.annotation.RpcReference;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,23 +18,26 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-public class TestController {
-
-    @RpcReference
-    private UserService userService;
+public class ConsumerController {
 
     @DubboReference
-    private DubboDemoService dubboDemoService;
+    private UserService userService;
+
+    @RpcReference
+    private UserService userServiceRPC;
 
     @PostMapping("/rpc/qi")
-    public String testQiRpc(@RequestBody User req) {
-        User user = userService.getUser(req);
-        return user.getName();
+    public ApiResponse<Void> testQiRpc(@RequestBody User req) {
+        String msg = userService.addUser(req);
+        log.info("qi rpc response is : {}",msg);
+        return ApiResponse.success();
     }
-
-    @GetMapping("/rpc/dubbo")
-    public String testDubbo() {
-        return dubboDemoService.test();
+    
+    @PostMapping("/rpc/dubbo")
+    public ApiResponse<Void> testDubboRpc(@RequestBody User req) {
+        String msg = userService.addUser(req);
+        log.info("dubbo rpc response is : {}",msg);
+        return ApiResponse.success();
     }
 
 }
